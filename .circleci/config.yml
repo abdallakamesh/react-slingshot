@@ -7,10 +7,10 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/base:stable
+      - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run: npm i 
+      - run: npm i
       - save_cache:
           paths:
             - /src/nofe_modules
@@ -20,7 +20,7 @@ jobs:
           command: npm run lint
   test:
     docker:
-      - image: cimg/base:stable
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - restore_cache:
@@ -31,7 +31,7 @@ jobs:
           command: npm run test
   analyze:
     docker:
-      - image: cimg/base:stable
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - restore_cache:
